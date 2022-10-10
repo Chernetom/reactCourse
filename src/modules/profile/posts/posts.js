@@ -8,7 +8,8 @@ const Posts = () => {
             <div className='profile_info'>profile+ava</div>
             <div className='my_posts'>My posts</div>
             <div className='new_posts'>New posts</div>
-            <Post />
+            <Post descr='package one' like= '15'/>
+            <Post descr='package two' like= '21'/>
         </div>
     );
 }
