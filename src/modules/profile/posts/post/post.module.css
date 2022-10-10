@@ -1,0 +1,12 @@
+.item {
+    color: black;
+    display: flex;
+
+}
+.img {
+    height: 32px;
+    width: 32px;
+    border-radius: 100%;
+    background-color: burlywood;
+    margin-right: 10px;
+}

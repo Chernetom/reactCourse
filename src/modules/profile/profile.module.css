@@ -1,13 +1,9 @@
 .profile {
     grid-area: profile;
-    background-color: white;
     margin-right: 30px;
-
+    background-color: aqua;
 }
 .profile img {
     width: 100%;
     height: 100px;
-}
-.under_img {
-    background-color: aqua;
 }
