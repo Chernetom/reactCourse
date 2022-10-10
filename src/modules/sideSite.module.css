@@ -1,0 +1,9 @@
+.side_menu {
+    grid-area: side-menu;
+    background-color: yellowgreen;
+
+}
+.item {
+    color: white;
+    list-style-type: none;
+}
