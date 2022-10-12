@@ -1,3 +1,17 @@
 .under_img {
-    background-color: aqua;
+    background-color: #5c5858;
+    position: relative;
+}
+.profile_photo {
+    position: absolute;
+    right: 20px;
+    width: 250px;
+    height: 170px;
+    margin-top: 12px;
+    top: 0;
+}
+.profile_path_header {
+    padding: 0 0 0 12px;
+    color: #d9d2d2;
+    font-size: 26px;
 }

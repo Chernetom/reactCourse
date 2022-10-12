@@ -9,7 +9,6 @@ const SideSite = () => {
             <li className={s.item}>News</li>
             <li className={s.item}>Music</li>
             <li className={s.item}>Settings</li>
-            <li className={s.item}>.</li>
         </ul>
     </nav>);
 }

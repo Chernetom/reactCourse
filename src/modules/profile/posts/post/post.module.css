@@ -2,6 +2,7 @@
     color: black;
     display: flex;
     position: relative;
+    padding: 12px 0 0 12px;
 }
 .img {
     height: 32px;
@@ -13,4 +14,8 @@
 .like {
     position: absolute;
     right: 20px;
+    color: #d9d2d2;
+}
+.descr {
+    color: #d9d2d2;
 }

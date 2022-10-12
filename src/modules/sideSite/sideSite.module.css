@@ -1,9 +1,16 @@
 .side_menu {
     grid-area: side-menu;
-    background-color: yellowgreen;
-
+    background-color: #5c5858;
+    margin-left: 15%;
+    margin-top: 12px;
+    border-radius: 8px;
+}
+.side_menu ul {
+    padding-inline-start: 0;
+    padding:0 25% 0 25%;
+    font-size: 26px;
 }
 .item {
-    color: white;
+    color: #d9d2d2;
     list-style-type: none;
 }
