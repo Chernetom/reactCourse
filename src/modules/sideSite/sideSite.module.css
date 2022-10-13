@@ -5,12 +5,17 @@
     margin-top: 12px;
     border-radius: 8px;
 }
-.side_menu ul {
-    padding-inline-start: 0;
-    padding:0 25% 0 25%;
-    font-size: 26px;
-}
 .item {
     color: #d9d2d2;
-    list-style-type: none;
+    text-decoration: none;
+    display: block;
+    padding:0 25% 0 25%;
+    font-size: 24px;
+}
+.item:hover {
+    color: #706e6e;
+    transition: 2s;
+}
+.menu_wrapper {
+    padding-top: 10%;
 }
