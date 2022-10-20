@@ -1,5 +1,6 @@
 .wrapper {
     min-height: 190px;
+    position: relative;
 }
 .name {
     font-size: 44px;
@@ -11,4 +12,12 @@
     font-size: 30px;
     padding: 0 0 0 12px;
     color: #d9d2d2;
+}
+.profile_photo {
+    position: absolute;
+    right: 20px;
+    width: 250px;
+    height: 170px;
+    margin-top: 12px;
+    top: 0;
 }

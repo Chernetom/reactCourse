@@ -1,11 +1,21 @@
 import React from "react";
 import s from './new_post.module.css';
 
-const NewPost = () => {
+const NewPost = (props) => {
+    let newPostInput = React.createRef();
+
+    let sendDataNewPost = () => {
+        props.addPost();
+    };
+    let newPostChange = () => {
+        let text = newPostInput.current.value;
+        props.updatePostText(text);
+    }
+
     return (
         <div className={s.new_post}>
-            <input className={s.input} placeholder="New post" type="text"/>
-            <button className={s.button}>Submit</button>
+            <input onChange={newPostChange} ref={newPostInput} className={s.input} value={props.postText} placeholder="New post" type="text"/>
+            <button onClick={sendDataNewPost} className={s.button}>Submit</button>
         </div>
     );
 }
