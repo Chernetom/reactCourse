@@ -1,0 +1,18 @@
+.head_app {
+    grid-area: head;
+    background-color: #5c5858;
+    width: 95%;
+    margin: 0 auto;
+    border-radius: 8px;
+}
+/*.head_app img {
+    width: 32px;
+    height: 32px;
+    padding-left: 50px;
+    z-index: 1;
+}*/
+.logo {
+    font-family: "Arial Black";
+    font-size: 32px;
+    padding: 5px 0 0 30px;
+}

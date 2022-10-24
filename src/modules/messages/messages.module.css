@@ -1,0 +1,63 @@
+.wrapper {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+}
+.header {
+}
+.dialogs {
+    padding: 12px 0 0 12px;
+}
+.dialog
+{
+    display: flex;
+    text-decoration: none;
+    color: #d9d2d2;
+    background-color: #5c5858;
+    align-items: center;
+    min-height: 50px;
+}
+.dialog_name {
+    font-size: 18px;
+    padding: 0 0 0 5px;
+}
+.dialog_img {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    padding: 0 0 0 5px;
+}
+.active {
+    background-color: #9d9a9a;
+}
+.messages {
+    padding: 12px 0 0 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-height: 85vh;
+}
+.message {
+
+}
+.input_wrapper {
+    position: relative;
+    width: 90%;
+}
+.messages_input {
+    width: 90%;
+    background-color: #9d9a9a;
+    outline: none;
+}
+.messages_input_button {
+    position: absolute;
+    width: 9%;
+    height: 90%;
+    right: 0;
+    top: 0;
+    background-color: #d9d2d2;
+    border: none;
+}
+.messages_input_button:hover {
+    background-color: #6c6a6a;
+    transition: 1s;
+}
