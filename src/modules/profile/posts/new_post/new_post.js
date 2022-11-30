@@ -5,11 +5,13 @@ const NewPost = (props) => {
     let newPostInput = React.createRef();
 
     let sendDataNewPost = () => {
+        //props.dispatch(addPostActionCreater());
         props.addPost();
     };
     let newPostChange = () => {
         let text = newPostInput.current.value;
-        props.updatePostText(text);
+        //props.dispatch(updateNewPostText(text));
+        props.updateNewPostText(text);
     }
 
     return (

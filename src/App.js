@@ -3,8 +3,8 @@ import './App.css';
 import Header from "./modules/header/header";
 import SideSite from "./modules/sideSite/sideSite";
 import Profile from "./modules/profile/profile";
-import Messages from "./modules/messages/messages";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
+import MessagesContainer from "./modules/messages/messages_container";
 
 
 function App(props) {
@@ -15,8 +15,8 @@ function App(props) {
                 <SideSite friend_img={props.state.friendsStatus.lastActive}/>
                 <div className='app_wrapper_content'>
                     <Routes>
-                        <Route path='/profile' element={<Profile state={props.state.profilePage} updatePostText={props.updatePostText} addPost={props.addPost}/>}/>
-                        <Route path='/messages/*' element={<Messages state={props.state.messagesPage} addInputMessage={props.addInputMessage} updateMessagesText={props.updateMessagesText}/>}/>
+                        <Route path='/profile' element={<Profile state={props.state.profilePage} dispatch={props.dispatch}/>}/>
+                        <Route path='/messages/*' element={<MessagesContainer state={props.state.messagesPage} dispatch={props.dispatch}/>}/>
                     </Routes>
                 </div>
             </div>
