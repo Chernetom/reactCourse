@@ -5,6 +5,8 @@ import SideSite from "./modules/sideSite/sideSite";
 import Profile from "./modules/profile/profile";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import MessagesContainer from "./modules/messages/messages_container";
+import UsersContainer from "./modules/users/usersContainer";
+
 
 
 function App(props) {
@@ -17,6 +19,7 @@ function App(props) {
                     <Routes>
                         <Route path='/profile' element={<Profile state={props.state.profilePage} dispatch={props.dispatch}/>}/>
                         <Route path='/messages/*' element={<MessagesContainer state={props.state.messagesPage} dispatch={props.dispatch}/>}/>
+                        <Route path='/users' element={<UsersContainer />}/>
                     </Routes>
                 </div>
             </div>

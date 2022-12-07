@@ -20,7 +20,7 @@ const SideSite = (props) => {
         <nav className={s.side_menu}>
             <div className={s.menu_wrapper}>
                 <NavLink to='/profile' className={ navData => navData.isActive ? s.item + ' ' +s.active : s.item }>Profile</NavLink>
-                <NavLink to='/friends' className={ navData => navData.isActive ? s.item + ' ' +s.active : s.item }>Friends</NavLink>
+                <NavLink to='/users' className={ navData => navData.isActive ? s.item + ' ' +s.active : s.item }>Users</NavLink>
                 <NavLink to='/messages' className={ navData => navData.isActive ? s.item + ' ' +s.active : s.item }>Messages</NavLink>
                 <NavLink to='/news' className={ navData => navData.isActive ? s.item + ' ' +s.active : s.item }>News</NavLink>
                 <NavLink to='/music' className={ navData => navData.isActive ? s.item + ' ' +s.active : s.item }>Music</NavLink>
