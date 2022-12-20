@@ -1,12 +1,16 @@
+import {profileAPI} from "../api/api";
+
 const ADD_POST = "ADD-POST";
 const UPDATE_NEW_POST_TEXT = "UPDATE-POST-TEXT";
+const SET_USER_PROFILE = "SET_USER_PROFILE";
 
 let initialState = {
     posts: [
         {descr: "Today i'm going to Defense of the Ancients", like: "15"},
         {descr: "Hi i'm here", like: "21"}
     ],
-    newPostText: ''
+    newPostText: '',
+    profile: null
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -27,6 +31,11 @@ const profileReducer = (state = initialState, action) => {
                 ...state,
                 newPostText:action.newText
             };
+        case SET_USER_PROFILE:
+            return {
+                ...state,
+                profile: action.profile
+            }
 
         default:
             return state;
@@ -41,5 +50,18 @@ export let addPostActionCreater = () => {
 export let updateNewPostText = (text) => {
     return { type: UPDATE_NEW_POST_TEXT, newText: text}
 };
+
+export let setUserProfile = (profile) => {
+    return { type: SET_USER_PROFILE, profile}
+}
+
+export const userProfile = (userId) => {
+    return (dispatch) => {
+        profileAPI.Profile(userId)
+            .then(response => {
+                dispatch(setUserProfile(response.data));
+            });
+    }
+}
 
 export default profileReducer;

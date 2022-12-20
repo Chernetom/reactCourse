@@ -1,9 +1,8 @@
 import {connect} from "react-redux";
-import {follow,
+import {
+    follow, getUsers,
     setCurrentPage,
-    setTotalUsersCount,
-    setUsers,
-    ToggleIsFetching,
+    toggleFollowingProgress,
     unfollow
 } from "../../redux/user-reducer";
 import Users from "./users";
@@ -14,7 +13,8 @@ let mapStateToProps = (state) => {
         pageSize: state.usersPage.pageSize,
         totalCount: state.usersPage.totalCount,
         currentPage: state.usersPage.currentPage,
-        isFetching: state.usersPage.isFetching
+        isFetching: state.usersPage.isFetching,
+        followingInProgress: state.usersPage.followingInProgress
     }
 }
 
@@ -44,7 +44,7 @@ let mapStateToProps = (state) => {
 export default connect (mapStateToProps, {
     follow,
     unfollow,
-    setUsers,
     setCurrentPage,
-    setTotalUsersCount,
-    ToggleIsFetching}) (Users);
+    toggleFollowingProgress,
+    getUsers
+}) (Users);

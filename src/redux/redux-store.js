@@ -3,13 +3,15 @@ import profileReducer from "./profile-reducer";
 import navbarReducer from "./navbar-redicer";
 import {configureStore} from "@reduxjs/toolkit";
 import usersReducer from "./user-reducer";
+import authReducer from "./auth-reducer";
 
 let store = configureStore({
     reducer: {
         profilePage: profileReducer,
-        messagesPage:messagesReducer,
+        messagesPage: messagesReducer,
         friendsStatus: navbarReducer,
-        usersPage: usersReducer
+        usersPage: usersReducer,
+        auth: authReducer
     }
 });
 

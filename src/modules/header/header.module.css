@@ -4,6 +4,7 @@
     width: 95%;
     margin: 0 auto;
     border-radius: 8px;
+    position: relative;
 }
 /*.head_app img {
     width: 32px;
@@ -15,4 +16,13 @@
     font-family: "Arial Black";
     font-size: 32px;
     padding: 5px 0 0 30px;
+}
+.log_wrapper {
+    position: absolute;
+    right: 12px;
+    top: 12px;
+}
+.log_wrapper a {
+    color: #cecaca;
+    text-decoration: none;
 }

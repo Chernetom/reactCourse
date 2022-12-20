@@ -1,29 +1,18 @@
 import React from "react";
 import UsersPhoto from "../../img/Kolyan.png";
 import s from "./users.module.css";
-import axios from "axios";
 import Preloader from "../common/Preloader/Preloader";
+import {NavLink} from "react-router-dom";
 
 class Users extends React.Component {
 
     componentDidMount() {
-        this.props.ToggleIsFetching(true);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.totalCount}`)
-            .then(response => {
-                this.props.ToggleIsFetching(false);
-                this.props.setUsers(response.data.items);
-                this.props.setTotalUsersCount(response.data.totalCount);
-            });
+        this.props.getUsers(this.props.currentPage,this.props.pageSize);
     }
 
     onPageChanged = (pageNumber) => {
         this.props.setCurrentPage(pageNumber);
-        this.props.ToggleIsFetching(true);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.totalCount}`)
-            .then(response => {
-                this.props.ToggleIsFetching(false);
-                this.props.setUsers(response.data.items);
-            });
+        this.props.getUsers(this.props.currentPage,this.props.pageSize);
     }
 
     render() {
@@ -41,13 +30,16 @@ class Users extends React.Component {
             {
                 this.props.users.map( u => <div key={u.id}>
                     <span>
-                        <div>
+                        <NavLink to={`/profile/${u.id}`}>
                             <img src={u.photos.small != null ? u.photos.small : UsersPhoto} alt="#" className={s.image}/>
-                        </div>
+                        </NavLink>
                         <div>
                             {u.followed
-                                ? <button onClick={() => { this.props.unfollow(u.id) }}>Follow</button>
-                                : <button onClick={() => { this.props.follow(u.id) }}>Unfollow</button>}
+                                ? <button disabled={this.props.followingInProgress.some(id => id === u.id)}
+                                          onClick={() => {this.props.unfollow(u.id)}}>Unfollow</button>
+                                : <button disabled={this.props.followingInProgress.some(id => id === u.id)}
+                                          onClick={() => {this.props.follow(u.id)}}>Follow</button>
+                            }
 
                         </div>
                     </span>
