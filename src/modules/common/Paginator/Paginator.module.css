@@ -1,0 +1,22 @@
+.wrapper {
+    margin: 10px 0 15px 10px;
+}
+.active_page {
+    color: #9d9a9a;
+    padding: 0 5px 0 5px;
+}
+.page {
+    color: #d9d2d2;
+    padding: 0 5px 0 5px;
+}
+.button {
+    width: 50px;
+    height: 20px;
+    right: 2%;
+    background-color: #d9d2d2;
+    border: none;
+}
+.button:hover {
+    background-color: #6c6a6a;
+    transition: 1s;
+}

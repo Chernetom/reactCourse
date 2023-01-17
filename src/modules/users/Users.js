@@ -1,8 +1,9 @@
 import React from "react";
 import UsersPhoto from "../../img/Kolyan.png";
-import s from "./users.module.css";
+import s from "./Users.module.css";
 import Preloader from "../common/Preloader/Preloader";
-import {NavLink} from "react-router-dom";
+import {Navigate, NavLink} from "react-router-dom";
+import Paginator from "../common/Paginator/Paginator";
 
 class Users extends React.Component {
 
@@ -16,31 +17,32 @@ class Users extends React.Component {
     }
 
     render() {
-        let pagesCount = Math.ceil(this.props.totalCount / this.props.pageSize);
-        let pages = [];
-        for(let i = 0; i < pagesCount; i++) {
-            pages.push(i + 1);
-        }
+        if (!this.props.isAuth) return <Navigate to={'/login'} />
+        // let pagesCount = Math.ceil(this.props.totalCount / this.props.pageSize);
+        // let pages = [];
+        // for(let i = 0; i < pagesCount; i++) {
+        //     pages.push(i + 1);
+        // }
         return(
         <div>
             {this.props.isFetching ? <Preloader /> : null}
-            <div>
-                {pages.map(p => <span className={this.props.currentPage === p ? s.active_page : s.page} onClick={() => {this.onPageChanged(p)}}>{p}</span>)}
-            </div>
+            {/*<div>*/}
+            {/*    {pages.map(p => <span className={this.props.currentPage === p ? s.active_page : s.page} onClick={() => {this.onPageChanged(p)}}>{p}</span>)}*/}
+            {/*</div>*/}
+            <Paginator {...this.props} onPageChanged={this.onPageChanged} />
             {
-                this.props.users.map( u => <div key={u.id}>
+                this.props.users.map( u => <div key={u.id} className={s.wrapper}>
                     <span>
                         <NavLink to={`/profile/${u.id}`}>
                             <img src={u.photos.small != null ? u.photos.small : UsersPhoto} alt="#" className={s.image}/>
                         </NavLink>
                         <div>
                             {u.followed
-                                ? <button disabled={this.props.followingInProgress.some(id => id === u.id)}
+                                ? <button className={s.button} disabled={this.props.followingInProgress.some(id => id === u.id)}
                                           onClick={() => {this.props.unfollow(u.id)}}>Unfollow</button>
-                                : <button disabled={this.props.followingInProgress.some(id => id === u.id)}
+                                : <button className={s.button} disabled={this.props.followingInProgress.some(id => id === u.id)}
                                           onClick={() => {this.props.follow(u.id)}}>Follow</button>
                             }
-
                         </div>
                     </span>
                     <span>

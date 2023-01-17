@@ -3,19 +3,21 @@
     margin-top: 12px;
 }
 .input {
-    width: 96%;
     background-color: #2a2a2a;
+    width: 96%;
     height: 50px;
     border: none;
     margin: 0 0 0 12px;
     outline: none;
     color: #d9d2d2;
+    resize:vertical;
+    max-height: 120px;
 }
 .button {
     width: 59px;
     height: 51px;
     position: absolute;
-    right: 2%;
+    right: 2.5%;
     background-color: #d9d2d2;
     border: none;
 }

@@ -1,11 +1,13 @@
 import React from 'react';
 import './App.css';
 import SideSite from "./modules/sideSite/sideSite";
-import {BrowserRouter, Route, Routes} from "react-router-dom";
-import MessagesContainer from "./modules/messages/messages_container";
+import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
+import MessagesContainer from "./modules/messages/messagesContainer";
 import UsersContainer from "./modules/users/usersContainer";
 import ProfileContainer from "./modules/profile/profileContainer";
 import HeaderContainer from "./modules/header/headerContainer";
+import Login from "./modules/login/Login";
+import Preloader from "./modules/common/Preloader/Preloader";
 
 
 
@@ -15,13 +17,18 @@ function App(props) {
         <BrowserRouter>
             <div className='app_wrapper'>
                 <HeaderContainer />
-                <SideSite friend_img={props.state.friendsStatus.lastActive}/>
+                <SideSite isAuth={props.state.auth.isAuth} friend_img={props.state.friendsStatus.lastActive}/>
                 <div className='app_wrapper_content'>
-                    <Routes>
-                        <Route path='/profile/:userId' element={<ProfileContainer />}/>
-                        <Route path='/messages/*' element={<MessagesContainer state={props.state.messagesPage} dispatch={props.dispatch}/>}/>
-                        <Route path='/users' element={<UsersContainer />}/>
-                    </Routes>
+                    <React.Suspense fallback={<div><Preloader /></div>}>
+                        <Routes>
+                            <Route path='/' element={<Navigate to={'/profile'} />}/>
+                            <Route path='/profile' element={<ProfileContainer />}/>
+                            <Route path='/profile/:userId' element={<ProfileContainer />}/>
+                            <Route path='/messages/*' element={<MessagesContainer />}/>
+                            <Route path='/users' element={<UsersContainer />}/>
+                            <Route path='/login' element={<Login />}/>
+                        </Routes>
+                    </React.Suspense>
                 </div>
             </div>
         </BrowserRouter>

@@ -1,9 +1,9 @@
 import React from 'react';
-import s from './messages.module.css';
-import {NavLink} from "react-router-dom";
-
+import s from './Messages.module.css';
+import {Navigate, NavLink} from "react-router-dom";
 
 const Dialog = (props) => {
+
     return (
         <NavLink to={"" + props.id} className={navDate => navDate.isActive ? s.dialog + " " + s.active : s.dialog}>
             <img className={s.dialog_img} src={props.img} alt="#"/>
@@ -13,6 +13,7 @@ const Dialog = (props) => {
 }
 
 const Message = (props) => {
+
     return (
         <div className={s.message}>{props.message}</div>
     )
@@ -26,12 +27,12 @@ const Messages = (props) => {
     let sendDataNewMessage = () => {
         props.sendDataNewMessage();
     };
-
     let newMessageChange = () => {
         let text = newInputMessage.current.value;
         props.newMessageChange(text);
     }
 
+    if(!props.isAuth) return <Navigate to={'/login'} />
 
     return(
         <div className={s.wrapper}>
@@ -41,8 +42,9 @@ const Messages = (props) => {
             <div className={s.messages}>
                 {messagesData}
                 <div className={s.input_wrapper}>
-                    <textarea onChange={newMessageChange} ref={newInputMessage} value={props.messagesPage.newMessage} placeholder="Write message" className={s.messages_input}></textarea>
-                    <button onClick={sendDataNewMessage} className={s.messages_input_button}>Send</button>
+                    <textarea className={s.messages_input} onChange={newMessageChange} ref={newInputMessage}
+                              value={props.messagesPage.newMessage} placeholder="Write message"></textarea>
+                    <button className={s.messages_input_button} onClick={sendDataNewMessage}>Send</button>
                 </div>
             </div>
         </div>

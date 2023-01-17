@@ -5,7 +5,9 @@ import {
     toggleFollowingProgress,
     unfollow
 } from "../../redux/user-reducer";
-import Users from "./users";
+import Users from "./Users";
+import {withAuthRedirect} from "../../hoc/withAuthRedirect";
+import {compose} from "redux";
 
 let mapStateToProps = (state) => {
     return {
@@ -14,9 +16,11 @@ let mapStateToProps = (state) => {
         totalCount: state.usersPage.totalCount,
         currentPage: state.usersPage.currentPage,
         isFetching: state.usersPage.isFetching,
-        followingInProgress: state.usersPage.followingInProgress
+        followingInProgress: state.usersPage.followingInProgress,
     }
 }
+
+/*let AuthRedirectComponent = withAuthRedirect(Users);*/
 
 /*let mapDispatchToProps = (dispatch) => {
     return {
@@ -41,10 +45,14 @@ let mapStateToProps = (state) => {
     }
 }*/
 
-export default connect (mapStateToProps, {
-    follow,
-    unfollow,
-    setCurrentPage,
-    toggleFollowingProgress,
-    getUsers
-}) (Users);
+
+export default compose(
+    connect (mapStateToProps, {
+        follow,
+        unfollow,
+        setCurrentPage,
+        toggleFollowingProgress,
+        getUsers
+    }),
+    withAuthRedirect
+)(Users);

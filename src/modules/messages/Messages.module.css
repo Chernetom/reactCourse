@@ -35,6 +35,8 @@
     flex-direction: column;
     justify-content: flex-end;
     min-height: 85vh;
+    background-color: #9d9a9a;
+    margin: 12px 10px 10px 0;
 }
 .message {
 
@@ -47,6 +49,8 @@
     width: 90%;
     background-color: #9d9a9a;
     outline: none;
+    resize:vertical;
+    max-height: 40px;
 }
 .messages_input_button {
     position: absolute;

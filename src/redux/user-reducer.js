@@ -1,4 +1,5 @@
 import {usersAPI} from "../api/api";
+import {updateObjectInArray} from "../utils/Object-helpers";
 
 const FOLLOW = "FOLLOW_USER";
 const UNFOLLOW = "UNFOLLOW_USER";
@@ -23,22 +24,24 @@ const usersReducer = (state = initState, action) => {
         case FOLLOW:
             return {
                 ...state,
-                users: state.users.map(u => {
-                    if (u.id === action.userId) {
-                        return {...u, followed: true}
-                    }
-                    return u;
-                })
+                users: updateObjectInArray(state.users,action.userId,"id", {followed: true})
+                // users: state.users.map(u => {
+                //     if (u.id === action.userId) {
+                //         return {...u, followed: true}
+                //     }
+                //     return u;
+                // })
             }
         case UNFOLLOW:
             return {
                 ...state,
-                users: state.users.map(u => {
-                    if (u.id === action.userId) {
-                        return {...u, followed: false}
-                    }
-                    return u;
-                })
+                users: updateObjectInArray(state.users,action.userId,"id", {followed: false})
+                // users: state.users.map(u => {
+                //     if (u.id === action.userId) {
+                //         return {...u, followed: false}
+                //     }
+                //     return u;
+                // })
             }
         case SET_USERS:
             return {
@@ -50,7 +53,7 @@ const usersReducer = (state = initState, action) => {
             }
         case SET_TOTAL_USERS:
             return {
-                ...state, totalCount: action.totalCount / 1000
+                ...state, totalCount: action.totalCount
             }
         case TOGGLE_IS_FETCHING:
             return {

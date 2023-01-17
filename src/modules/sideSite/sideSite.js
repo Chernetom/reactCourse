@@ -25,8 +25,8 @@ const SideSite = (props) => {
                 <NavLink to='/news' className={ navData => navData.isActive ? s.item + ' ' +s.active : s.item }>News</NavLink>
                 <NavLink to='/music' className={ navData => navData.isActive ? s.item + ' ' +s.active : s.item }>Music</NavLink>
                 <NavLink to='/settings' className={ navData => navData.isActive ? s.item + ' ' +s.active : s.item }>Settings</NavLink>
-                <div className={s.last_active}>Last active</div>
-                <div className={s.last_active_wrapper}>
+                <div className={props.isAuth ? s.last_active : s.none}>Last active</div>
+                <div className={props.isAuth ? s.last_active_wrapper : s.none}>
                     {cycle_img}
                 </div>
             </div>
